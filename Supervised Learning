@@ -1,18 +1,21 @@
-- Describe one real-world application in industry where the model can be applied. 
-- What are the strengths of the model; when does it perform well?
-- What are the weaknesses of the model; when does it perform poorly?
-- What makes this model a good candidate for the problem, given what you know about the data?
-
 1.	Decision Trees
 One application of Decision Trees would be to diagnose a particular medical condition given the symptoms and test results as features and the diagnosis as the output
 Decision trees, as a classifier are easy to understand. They can be represented without the use of complex models. Decision trees perform well when the interactions between the features is less complex [1].  Another advantage of Decision Trees is that they require no information about the distribution of the features [2].
 Decision Trees are largely prone to overfitting [3]. Using large number of features which may not results in this behavior. Using a large number of features will also lead to a relatively large implementation.
 Given the nature of our data where we have continuous attributes like hours-per-week and also nominal information like Race, Marital Status, etc., Decision Trees can handle both these type of inputs [1].  Decision Trees, are also, better resistant to irrelevant features in the data [4]. As is the case here, Marital Status, Relationship, Race, Sex, etc. may not affect the income of an individual. Decision Trees are also good at handling outliers in the data as we see from the skewed nature of capital-gain and capital-loss data.
+
 2.	Ensemble Methods
 Ensemble Methods can be used for predicting the probability of a person to enjoy a particular movie, given their preferences and interests [5].
 Overfitting can be reduced by ensemble methods by using subsets of the features [6]. This also helps improve classification accuracy. 
 The underlying learning concept when using Ensemble Methods may be difficult to understand when there are many features. Time taken for training and memory consumed will also be higher when compared to non-ensemble methods [7].
 The high number of features in our dataset could lead to over fitting.  This can be overcome by using ensemble methods. Also, some of the features seem to contain a high bias. This could be countered by using methods like Boosting. [6]
+
+3. Support Vector Machines
+SVMs can be used for classifying emails as spam or not spam. [8]
+SVMs perform well on linear and non-linear data. They also provide a good generalization on any new sample. SVMs also provide us a with a unique solution to the problem. [9]
+Support Vector Machines can have large training time if there a high number of features. Also, if the kernel is non-linear, execution can also be slow. [8]
+Given that there is no information on the separability of the data, it is a safe bet to use SVMs as they perform well on linear and non-linear data. Since SVMs have a margin and are robust, they can tolerate few errors in the training samples. 
+
 [1] Rokach, L. and Maimon, O., 2005. Top-down induction of decision trees classifiers-a survey. IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews), 35(4), pp.476-487.
 [2] Friedl, M.A., Brodley, C.E. and Strahler, A.H., 1999. Maximizing land cover classification accuracies produced by decision trees at continental to global scales. IEEE Transactions on Geoscience and Remote Sensing, 37(2), pp.969-977.
 [3] Hailemariam, E., Goldstein, R., Attar, R. and Khan, A., 2011, April. Real-time occupancy detection using decision trees with multiple sensor types. In Proceedings of the 2011 Symposium on Simulation for Architecture and Urban Design (pp. 141-148). Society for Computer Simulation International.
@@ -20,4 +23,5 @@ The high number of features in our dataset could lead to over fitting.  This can
 [5] Zhou, Z.H., 2012. Ensemble methods: foundations and algorithms. Chapman and Hall/CRC.
 [6] Yang, P., Hwa Yang, Y., B Zhou, B. and Y Zomaya, A., 2010. A review of ensemble methods in bioinformatics. Current Bioinformatics, 5(4), pp.296-308.
 [7] https://eecs.wsu.edu/~holder/courses/cse5361/spr06/lectures/ensemble.pdf 
-
+[8] Drucker, H., Wu, D. and Vapnik, V.N., 1999. Support vector machines for spam categorization. IEEE Transactions on Neural networks, 10(5), pp.1048-1054.
+[9] Auria, L. and Moro, R.A., 2008. Support vector machines (SVM) as a technique for solvency analysis.
