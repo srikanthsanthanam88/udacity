@@ -4,24 +4,34 @@ Decision trees, as a classifier are easy to understand. They can be represented 
 Decision Trees are largely prone to overfitting [3]. Using large number of features which may not results in this behavior. Using a large number of features will also lead to a relatively large implementation.
 Given the nature of our data where we have continuous attributes like hours-per-week and also nominal information like Race, Marital Status, etc., Decision Trees can handle both these type of inputs [1].  Decision Trees, are also, better resistant to irrelevant features in the data [4]. As is the case here, Marital Status, Relationship, Race, Sex, etc. may not affect the income of an individual. Decision Trees are also good at handling outliers in the data as we see from the skewed nature of capital-gain and capital-loss data.
 
-2.	Ensemble Methods
-Ensemble Methods can be used for predicting the probability of a person to enjoy a particular movie, given their preferences and interests [5].
-Overfitting can be reduced by ensemble methods by using subsets of the features [6]. This also helps improve classification accuracy. 
+2.	Random Forests (RF)
+Random Forests can be used for a wide variety of applications. One such application, is the Gene selection and classification of microarray data as shown in [5].
+RF classifiers can handle unbalanced data and also categorical data. They also prioritize features during the classification process.  [6]
 The underlying learning concept when using Ensemble Methods may be difficult to understand when there are many features. Time taken for training and memory consumed will also be higher when compared to non-ensemble methods [7].
-The high number of features in our dataset could lead to over fitting.  This can be overcome by using ensemble methods. Also, some of the features seem to contain a high bias. This could be countered by using methods like Boosting. [6]
+The high number of features in our dataset could lead to over fitting.  This can be overcome by using Random Forests. Also, some of the features appear to contain outliers. RF are generally immune to outliers. [8]
 
-3. Support Vector Machines
-SVMs can be used for classifying emails as spam or not spam. [8]
-SVMs perform well on linear and non-linear data. They also provide a good generalization on any new sample. SVMs also provide us a with a unique solution to the problem. [9]
-Support Vector Machines can have large training time if there a high number of features. Also, if the kernel is non-linear, execution can also be slow. [8]
-Given that there is no information on the separability of the data, it is a safe bet to use SVMs as they perform well on linear and non-linear data. Since SVMs have a margin and are robust, they can tolerate few errors in the training samples. 
+3. Gaussian Naive Bayes
+GaussainNB classifiers have long been used for text retreival and classification. [9]
+Naive Bayes algorithms in general are fast and require less memory. They are tolerant towards irrelevant features in the data. It works well on discrete and continuos data. [10]
+Naive Bayes classifiers assume that the features are independent of each other, which may not be the case in some scenarios [9]. Also, GaussainNB performance will suffer if the data is not truly Gaussian.[11]  
+The data, as we know, is both discrete and continuos valued. It also has many features, some of which could be less significant in predicting the output. Hence GaussianNB would be a suitable classifier to handle this data, whilst being fast and consuming less memory. 
 
 [1] Rokach, L. and Maimon, O., 2005. Top-down induction of decision trees classifiers-a survey. IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews), 35(4), pp.476-487.
 [2] Friedl, M.A., Brodley, C.E. and Strahler, A.H., 1999. Maximizing land cover classification accuracies produced by decision trees at continental to global scales. IEEE Transactions on Geoscience and Remote Sensing, 37(2), pp.969-977.
 [3] Hailemariam, E., Goldstein, R., Attar, R. and Khan, A., 2011, April. Real-time occupancy detection using decision trees with multiple sensor types. In Proceedings of the 2011 Symposium on Simulation for Architecture and Urban Design (pp. 141-148). Society for Computer Simulation International.
 [4] Hastie, T., Tibshirani, R. and Friedman, J., 2009. Boosting and Additive Trees. In The elements of statistical learning (pp. 350-351). Springer, New York, NY.
-[5] Zhou, Z.H., 2012. Ensemble methods: foundations and algorithms. Chapman and Hall/CRC.
-[6] Yang, P., Hwa Yang, Y., B Zhou, B. and Y Zomaya, A., 2010. A review of ensemble methods in bioinformatics. Current Bioinformatics, 5(4), pp.296-308.
+[5] Díaz-Uriarte, R. and De Andres, S.A., 2006. Gene selection and classification of microarray data using random forest. BMC bioinformatics, 7(1), p.3.
+[6] Pal, M., 2005. Random forest classifier for remote sensing classification. International Journal of Remote Sensing, 26(1), pp.217-222.
 [7] https://eecs.wsu.edu/~holder/courses/cse5361/spr06/lectures/ensemble.pdf 
-[8] Drucker, H., Wu, D. and Vapnik, V.N., 1999. Support vector machines for spam categorization. IEEE Transactions on Neural networks, 10(5), pp.1048-1054.
-[9] Auria, L. and Moro, R.A., 2008. Support vector machines (SVM) as a technique for solvency analysis.
+[8] https://www.princeton.edu/~aylinc/files/CS613-15-04.pdf
+[9] Lewis, D.D., 1998, April. Naive (Bayes) at forty: The independence assumption in information retrieval. In European conference on machine learning (pp. 4-15). Springer, Berlin, Heidelberg.
+[10] http://www.cs.ucr.edu/~eamonn/CE/Bayesian%20Classification%20withInsect_examples.pdf
+[11] http://responsive.media.mit.edu/wp-content/uploads/sites/5/2014/01/Class-4-Naive-Bayes.pdf
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The F-score for the testing set when 100% of the training set is used is comparable for all three classifiers with GaussainNB having a slightly lower score. The accuracy of GaussianNB is far lower compared to the other two classifiers. Decision Trees and RF require more training time but prediction time is far less for RF. This is a good bargain considering the final F-score. Since some features are more important than others and there are significant number of features, Random Forest will be most suited to this data rather than using Decision Tress, as this may result in overfitting.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The final model chosen in this case, is Random Forests. It can be called an extension or superset of small decision trees. A single Decision Tree would incorporate all the features in its rules which may result in overfitting. Random Forests work around this problem by picking random subsets of features and forming Decision Trees for these subsets. They final decision from these small trees are then weighted based on the importance of the features to obtain the final vote / prediction for the problem. In short, Random Forests are an intelligent combination of small Decision Trees, whose decisions are weighted to arrive at a final prediction.
