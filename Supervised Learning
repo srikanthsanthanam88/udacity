@@ -35,3 +35,27 @@ The F-score for the testing set when 100% of the training set is used is compara
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The final model chosen in this case, is Random Forests. It can be called an extension or superset of small decision trees. A single Decision Tree would incorporate all the features in its rules which may result in overfitting. Random Forests work around this problem by picking random subsets of features and forming Decision Trees for these subsets. They final decision from these small trees are then weighted based on the importance of the features to obtain the final vote / prediction for the problem. In short, Random Forests are an intelligent combination of small Decision Trees, whose decisions are weighted to arrive at a final prediction.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The accuracy and F-score of the optimized model on the testing data is 0.8603 and 0.7279 respectively. These results are better when compared to the unoptimized model. In comparison with the Naive Predictor, the results of the optimized model show a huge improvement. There is nearly a three-fold improvement in both the accuracy and f-score. However, if the Naive Predictor were to predict all persons as having income less than $50K, then its acccuracy would be much higer and not so further from the unoptimized model.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The five features that would be important are: age, education_level, workclass, occupation and hours-per-week.
+
+Rank 1: Age - With age being higher, the person likely to have more experience and thereby a higher income.
+Rank 2: Education Level - A person with higher education levels is likely to have a higher income.
+Rank 3: Occupation - The levels of income are dependent on the field / nature of job the individual is involved in.
+Rank 4: Captial Gain - Income arising from capital gains (stock, equity, real-estate) could play a significant role in increasing / decreasing an individuals annual income.
+Rank 4: Hours Per Week - In the case of hourly employment or self-employed individuals, the number of hours worked per week is likely to have a direct influence on their income. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Age, Capital Gain and Hours Per Week are part of the answer for Question 6. Relationship(Husband), Marital Status(civ-spouse) are the features that are not discussed in the previous answer. 
+These two features are significant because the relationship or marital status of the person is a key factor in deciding the income a person needs to support his / her family. Thus they could be more imporant features in this particular case.
+Overall, these five features account for 60% of the importance in deciding the annual income of a person.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The accuracy and f-score of the final model are slightly lesser than that of that model that uses all the features. The accuracy is lowered by about 6% whereas the f-score drops by nearly 15%. The training time taken by the model utilizing the full set of features is far more than the one using the reduced data. Thus, if training time was a factor, it would be a good trade-off to use the reduced model with an accuracy that is only 5% lower than the accuracy of the full model.
