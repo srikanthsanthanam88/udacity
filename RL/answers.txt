@@ -1,0 +1,93 @@
+==============TRY 1=======================================================================================================================
+
+reward = 1 - (((self.target_pos - self.sim.pose[:3])).sum()/(self.target_pos.sum()))
+
+self.buffer_size = 100000
+self.batch_size = 32
+
+self.gamma = 0.99  # discount factor
+self.tau = 0.001  # for soft update of target parameters
+
+lr=0.01
+
+#Actor
+
+        net = layers.Dense(units=128,kernel_regularizer=layers.regularizers.l2(1e-6))(states)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("sigmoid")(net)
+        
+        net = layers.Dense(units=64,kernel_regularizer=layers.regularizers.l2(1e-6))(net)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("sigmoid")(net)
+        
+        net = layers.Dense(units=32,kernel_regularizer=layers.regularizers.l2(1e-6))(net)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("sigmoid")(net)
+
+        #Raw Values for Actions
+        action_vals = layers.Dense(units=self.action_size, activation='sigmoid',
+        name='action_values',kernel_initializer=layers.initializers.RandomUniform(minval=-0.003, maxval=0.003))(net)
+		
+#Critic
+
+        Snet = layers.Dense(units=512,kernel_regularizer=layers.regularizers.l2(1e-6))(states)
+        Snet = layers.BatchNormalization()(Snet)
+        Snet = layers.Activation("sigmoid")(Snet)
+
+        Snet = layers.Dense(units=256, kernel_regularizer=layers.regularizers.l2(1e-6))(Snet)
+
+        # Add hidden layer(s) for action pathway
+        Anet = layers.Dense(units=256,kernel_regularizer=layers.regularizers.l2(1e-6))(actions)
+		
+
+best = 468.300 , worst = -135.573
+		
+==============TRY 1=======================================================================================================================
+
+==============TRY 2=======================================================================================================================
+
+lr=0.1
+
+(best = 391.143 , worst =   0.600
+==============TRY 2=======================================================================================================================
+
+==============TRY 3=======================================================================================================================
+
+lr=0.05
+
+(best = 474.139 , worst = -50.333
+==============TRY 3=======================================================================================================================
+
+==============TRY 4=======================================================================================================================
+
+#Actor
+
+        net = layers.Dense(units=128,kernel_regularizer=layers.regularizers.l2(1e-6))(states)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("relu")(net)
+        
+        net = layers.Dense(units=64,kernel_regularizer=layers.regularizers.l2(1e-6))(net)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("relu")(net)
+        
+        net = layers.Dense(units=32,kernel_regularizer=layers.regularizers.l2(1e-6))(net)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation("relu")(net)
+
+        #Raw Values for Actions
+        action_vals = layers.Dense(units=self.action_size, activation='sigmoid',
+        name='action_values',kernel_initializer=layers.initializers.RandomUniform(minval=-0.003, maxval=0.003))(net)
+		
+#Critic
+
+        Snet = layers.Dense(units=512,kernel_regularizer=layers.regularizers.l2(1e-6))(states)
+        Snet = layers.BatchNormalization()(Snet)
+        Snet = layers.Activation("relu")(Snet)
+
+        Snet = layers.Dense(units=256, kernel_regularizer=layers.regularizers.l2(1e-6))(Snet)
+
+        # Add hidden layer(s) for action pathway
+        Anet = layers.Dense(units=256,kernel_regularizer=layers.regularizers.l2(1e-6))(actions)
+
+best = 391.016 , worst =   0.600
+==============TRY 4=======================================================================================================================
